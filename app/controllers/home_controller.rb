@@ -10,6 +10,10 @@ class HomeController < ApplicationController
   end
 
   def table
-    resp = Net::HTTP.get_response(URI.parse(""))
+    resp = Net::HTTP.get_response(URI.parse("http://football-api.com/api/?Action=standings&APIKey=c41c2c1f-8db7-9cce-3a555f3d5be2&comp_id=1204"))
+    data = resp.body
+
+    result = JSON.parse(data)
+    @teams = result["teams"]
   end
 end
