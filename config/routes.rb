@@ -1,6 +1,16 @@
 BinaryScore::Application.routes.draw do
+  resources :matches
+
+  resources :players
+
+  resources :events
+
+  resources :teams
+
   get "home/index"
   get "home/table"
+  get "home/error"
+  get "home/fixtures"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,19 +1,23 @@
-require 'net/http'
-
 class HomeController < ApplicationController
-  def index
-    resp = Net::HTTP.get_response(URI.parse("http://football-api.com/api/?Action=competitions&APIKey=c41c2c1f-8db7-9cce-3a555f3d5be2"))
-    data = resp.body
+  include ApplicationHelper
 
-    result = JSON.parse(data)
-    @liga = result["Competition"].first
+  def index
+    result = getJSON "competitions"
+    @data = result["Competition"]
   end
 
   def table
-    resp = Net::HTTP.get_response(URI.parse("http://football-api.com/api/?Action=standings&APIKey=c41c2c1f-8db7-9cce-3a555f3d5be2&comp_id=1204"))
-    data = resp.body
-
-    result = JSON.parse(data)
+    result = getJSON "standings&comp_id=1204"
     @teams = result["teams"]
+  end
+
+  def error
+    @ip = session[:ip]
+    @error = session[:error]
+  end
+
+  def fixtures
+    result = getJSON "fixtures&comp_id=1204&from_date=01.01.1990&to_date=01.07.2050"
+    @data = result["matches"].first
   end
 end

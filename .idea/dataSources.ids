@@ -5,4 +5,10 @@
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
     <schema name="" catalog=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails Binary_Score: test" uuid="536b1403-12d0-43c1-83ff-c63d4f230c1c">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails Binary_Score: production" uuid="d47f4d41-a1df-4147-8b5b-8493992e3888">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
