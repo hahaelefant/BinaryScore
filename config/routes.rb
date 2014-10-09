@@ -1,13 +1,12 @@
 BinaryScore::Application.routes.draw do
-  resources :matches
-
-  resources :players
-
-  resources :events
 
   resources :teams
+  resources :matches
+  resources :players
+  resources :events
 
   get "home/index"
+  get "home/update"
   get "home/table"
   get "home/error"
   get "home/fixtures"

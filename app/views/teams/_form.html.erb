@@ -12,16 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %><br>
-    <%= f.number_field :id %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :position %><br>
     <%= f.number_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :wins %><br>
+    <%= f.number_field :wins %>
+  </div>
+  <div class="field">
+    <%= f.label :draws %><br>
+    <%= f.number_field :draws %>
+  </div>
+  <div class="field">
+    <%= f.label :defeats %><br>
+    <%= f.number_field :defeats %>
+  </div>
+  <div class="field">
+    <%= f.label :goals_scored %><br>
+    <%= f.number_field :goals_scored %>
+  </div>
+  <div class="field">
+    <%= f.label :goals_conceded %><br>
+    <%= f.number_field :goals_conceded %>
+  </div>
+  <div class="field">
+    <%= f.label :goaldifference %><br>
+    <%= f.number_field :goaldifference %>
+  </div>
+  <div class="field">
+    <%= f.label :points %><br>
+    <%= f.number_field :points %>
   </div>
   <div class="actions">
     <%= f.submit %>

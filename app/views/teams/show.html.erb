@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Id:</strong>
-  <%= @team.id %>
-</p>
-
-<p>
   <strong>Name:</strong>
   <%= @team.name %>
 </p>
@@ -13,6 +8,41 @@
 <p>
   <strong>Position:</strong>
   <%= @team.position %>
+</p>
+
+<p>
+  <strong>Wins:</strong>
+  <%= @team.wins %>
+</p>
+
+<p>
+  <strong>Draws:</strong>
+  <%= @team.draws %>
+</p>
+
+<p>
+  <strong>Defeats:</strong>
+  <%= @team.defeats %>
+</p>
+
+<p>
+  <strong>Goals scored:</strong>
+  <%= @team.goals_scored %>
+</p>
+
+<p>
+  <strong>Goals conceded:</strong>
+  <%= @team.goals_conceded %>
+</p>
+
+<p>
+  <strong>Goaldifference:</strong>
+  <%= @team.goaldifference %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @team.points %>
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |

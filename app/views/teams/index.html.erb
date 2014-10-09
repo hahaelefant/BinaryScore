@@ -3,9 +3,15 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
       <th>Name</th>
       <th>Position</th>
+      <th>Wins</th>
+      <th>Draws</th>
+      <th>Defeats</th>
+      <th>Goals scored</th>
+      <th>Goals conceded</th>
+      <th>Goaldifference</th>
+      <th>Points</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,9 +21,15 @@
   <tbody>
     <% @teams.each do |team| %>
       <tr>
-        <td><%= team.id %></td>
         <td><%= team.name %></td>
         <td><%= team.position %></td>
+        <td><%= team.wins %></td>
+        <td><%= team.draws %></td>
+        <td><%= team.defeats %></td>
+        <td><%= team.goals_scored %></td>
+        <td><%= team.goals_conceded %></td>
+        <td><%= team.goaldifference %></td>
+        <td><%= team.points %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,16 +1,4 @@
 <h1>Tabelle</h1>
 <p>
-  <table>
-    <thead>
-      <td>Position</td>
-      <td>Team</td>
-    </thead>
-    <% @teams.each do |x| %>
-        <tr>
-          <td><%= simple_format x["stand_position"] %></td>
-          <td><%= simple_format x["stand_team_name"] %></td>
-        </tr>
-    <% end %>
-  </table>
-    <%=@teams.first%>
+    <%= @teams %>
 </p>

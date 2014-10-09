@@ -1,10 +1,12 @@
 class TeamsController < ApplicationController
+  include ApplicationHelper
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /teams
   # GET /teams.json
   def index
     @teams = Team.all
+    @teams.order! :position
   end
 
   # GET /teams/1
@@ -69,6 +71,6 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:id, :name, :position)
+      params.require(:team).permit(:name, :position, :wins, :draws, :defeats, :goals_scored, :goals_conceded, :goaldifference, :points)
     end
 end
