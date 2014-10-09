@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :match_id %><br>
-    <%= f.number_field :match_id %>
-  </div>
-  <div class="field">
     <%= f.label :date %><br>
     <%= f.date_select :date %>
   </div>
@@ -24,16 +20,16 @@
     <%= f.datetime_select :time %>
   </div>
   <div class="field">
-    <%= f.label :hometeam %><br>
-    <%= f.number_field :hometeam %>
+    <%= f.label :home_team %><br>
+    <%= f.number_field :home_team %>
   </div>
   <div class="field">
     <%= f.label :home_score %><br>
     <%= f.number_field :home_score %>
   </div>
   <div class="field">
-    <%= f.label :visitor %><br>
-    <%= f.number_field :visitor %>
+    <%= f.label :visitor_team %><br>
+    <%= f.number_field :visitor_team %>
   </div>
   <div class="field">
     <%= f.label :visitor_score %><br>

@@ -3,12 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Match</th>
       <th>Date</th>
       <th>Time</th>
-      <th>Hometeam</th>
+      <th>Home team</th>
       <th>Home score</th>
-      <th>Visitor</th>
+      <th>Visitor team</th>
       <th>Visitor score</th>
       <th></th>
       <th></th>
@@ -19,12 +18,11 @@
   <tbody>
     <% @matches.each do |match| %>
       <tr>
-        <td><%= match.match_id %></td>
         <td><%= match.date %></td>
         <td><%= match.time %></td>
-        <td><%= match.hometeam %></td>
+        <td><%= match.home_team %></td>
         <td><%= match.home_score %></td>
-        <td><%= match.visitor %></td>
+        <td><%= match.visitor_team %></td>
         <td><%= match.visitor_score %></td>
         <td><%= link_to 'Show', match %></td>
         <td><%= link_to 'Edit', edit_match_path(match) %></td>

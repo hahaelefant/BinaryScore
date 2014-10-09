@@ -43,6 +43,17 @@ class HomeController < ApplicationController
     #update matches, events and players
     result = getJSON("fixtures&comp_id=1204&from_date=01.08.2014&to_date=31.06.2015")["matches"]
     result.each do |match|
+      m = Match.new
+      m = Match.find(match["match_id"]) if Match.exists? match["match_id"]
+      m.id = match["match_id"]
+      m.date= match["match_formatted_date"]
+      m.home_score= match["match_localteam_score"]
+      m.home_team= match["match_localteam_id"]
+      m.visitor_score= match["match_visitorteam_score"]
+      m.visitor_team= match["match_visitorteam_id"]
+      m.time= match["match_time"]
+      m.save
+
       match["match_events"].each do |event|
         #create or update Player
         p = Player.new
@@ -53,7 +64,7 @@ class HomeController < ApplicationController
         p.team_id= match["match_visitorteam_id"] if event["event_team"] == "visitorteam"
         p.save
 
-        #create or update 
+        #create or update events
       end
     end
   end

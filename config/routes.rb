@@ -1,5 +1,7 @@
 BinaryScore::Application.routes.draw do
 
+  resources :matches
+
   resources :teams
   resources :matches
   resources :players

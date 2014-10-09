@@ -1,19 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  match_id: 1
-  date: 2014-10-07
-  time: 2014-10-07 20:49:38
-  hometeam: 1
+  date: 2014-10-09
+  time: 2014-10-09 11:53:59
+  home_team: 1
   home_score: 1
-  visitor: 1
+  visitor_team: 1
   visitor_score: 1
 
 two:
-  match_id: 1
-  date: 2014-10-07
-  time: 2014-10-07 20:49:38
-  hometeam: 1
+  date: 2014-10-09
+  time: 2014-10-09 11:53:59
+  home_team: 1
   home_score: 1
-  visitor: 1
+  visitor_team: 1
   visitor_score: 1
