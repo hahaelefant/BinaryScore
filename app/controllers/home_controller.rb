@@ -26,7 +26,7 @@ class HomeController < ApplicationController
     result = getJSON("standings&comp_id=1204")["teams"]
     result.each do |team|
       t = Team.new
-      t = Team.find(team["stand_team_id"]) if Team.find(team["stand_team_id"])
+      t = Team.find(team["stand_team_id"]) if Team.exists?(team["stand_team_id"])
       t.id = team["stand_team_id"]
       t.position= team["stand_position"]
       t.defeats = team["stand_overall_l"]
@@ -44,13 +44,16 @@ class HomeController < ApplicationController
     result = getJSON("fixtures&comp_id=1204&from_date=01.08.2014&to_date=31.06.2015")["matches"]
     result.each do |match|
       match["match_events"].each do |event|
+        #create or update Player
         p = Player.new
-        p= Player.find(event["event_player_id"]) if Player.find(event["event_player_id"])
+        p = Player.find(event["event_player_id"]) if Player.exists?(event["event_player_id"])
         p.id = event["event_player_id"]
         p.name= event["event_player"]
         p.team_id= match["match_localteam_id"] if event["event_team"] == "localteam"
         p.team_id= match["match_visitorteam_id"] if event["event_team"] == "visitorteam"
         p.save
+
+        #create or update 
       end
     end
   end
