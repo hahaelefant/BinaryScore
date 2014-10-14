@@ -17,7 +17,12 @@ class HomeController < ApplicationController
   end
 
   def fixtures
-    result = getJSON("fixtures&comp_id=1204&from_date=01.08.2014&to_date=31.06.2015")["matches"].first
+    result = getJSON("fixtures&comp_id=1204&from_date=01.08.2014&to_date=31.06.2015")["matches"]
+    @data = result
+  end
+
+  def livescores
+    result = getJSON("today&comp_id=1204")
     @data = result
   end
 
@@ -37,12 +42,13 @@ class HomeController < ApplicationController
       t.name= team["stand_team_name"]
       t.points= team["stand_points"]
       t.wins= team["stand_overall_w"]
-      t.save
+      t.save unless Team.exists?(team["stand_team_id"]) && Team.find(team["stand_team_id"]) == t
     end
 
     #update matches, events and players
     result = getJSON("fixtures&comp_id=1204&from_date=01.08.2014&to_date=31.06.2015")["matches"]
     result.each do |match|
+      #create or update Method
       m = Match.new
       m = Match.find(match["match_id"]) if Match.exists? match["match_id"]
       m.id = match["match_id"]
@@ -54,7 +60,10 @@ class HomeController < ApplicationController
       m.time= match["match_time"]
       m.save
 
+      next if match["match_events"] == nil
       match["match_events"].each do |event|
+        # next if MatchEvent.exists?(event["event_id"])
+
         #create or update Player
         p = Player.new
         p = Player.find(event["event_player_id"]) if Player.exists?(event["event_player_id"])
@@ -65,6 +74,17 @@ class HomeController < ApplicationController
         p.save
 
         #create or update events
+        e = MatchEvent.new
+        e = MatchEvent.find(event["event_id"]) if Player.exists?(event["event_id"])
+        e.id = event["event_id"]
+        e.hometeam= event["event_team"]=="localteam"
+        e.match_id= event["event_match_id"]
+        e.minute= event["event_minute"]
+        e.player_id= event["event_player_id"]
+        e.score = event["event_result"]
+        e.eventtype= event["event_type"]
+        e.player_name = event["event_player"]
+        e.save
       end
     end
   end

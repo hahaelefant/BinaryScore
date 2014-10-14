@@ -13,19 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20141008182337) do
 
-  create_table "events", force: true do |t|
-    t.string   "type"
+  create_table "match_events", force: true do |t|
+    t.string   "eventtype"
     t.integer  "minute"
     t.boolean  "hometeam"
     t.integer  "player_id"
+    t.string   "player_name"
     t.string   "score"
     t.integer  "match_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "events", ["match_id"], name: "events_match_id_fk", using: :btree
-  add_index "events", ["player_id"], name: "events_player_id_fk", using: :btree
+  add_index "match_events", ["match_id"], name: "match_events_match_id_fk", using: :btree
+  add_index "match_events", ["player_id"], name: "match_events_player_id_fk", using: :btree
 
   create_table "matches", force: true do |t|
     t.date     "date"
@@ -64,8 +65,8 @@ ActiveRecord::Schema.define(version: 20141008182337) do
     t.integer  "points"
   end
 
-  add_foreign_key "events", "matches", name: "events_match_id_fk"
-  add_foreign_key "events", "players", name: "events_player_id_fk"
+  add_foreign_key "match_events", "matches", name: "match_events_match_id_fk"
+  add_foreign_key "match_events", "players", name: "match_events_player_id_fk"
 
   add_foreign_key "matches", "teams", name: "matches_home_team_fk", column: "home_team"
   add_foreign_key "matches", "teams", name: "matches_visitor_team_fk", column: "visitor_team"

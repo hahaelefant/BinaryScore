@@ -1,6 +1,15 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
+  def topscorer
+    @players = Hash.new(0);
+    Player.all.each do |x|
+      # x.name = x.name.slice x.name.index("(") if x.name.index('(') != nil
+      @players[x.name] = MatchEvent.find_all_by_player_name(x.name).select { |y| y.eventtype == "goal"}.count
+    end
+    @players = @players.sort_by {|a,b| b}.reverse
+  end
+
   # GET /players
   # GET /players.json
   def index
