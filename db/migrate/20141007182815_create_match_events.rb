@@ -4,9 +4,9 @@ class CreateMatchEvents < ActiveRecord::Migration
       t.integer :id, null:false, unique: true
       t.string :eventtype
       t.integer :minute
-      t.boolean :hometeam
       t.integer :player_id
       t.string :player_name
+      t.integer :team_id
       t.string :score
       t.integer :match_id
 

@@ -26,6 +26,14 @@ class HomeController < ApplicationController
     @data = result
   end
 
+  def topscorer
+    @players = Hash.new(0)
+    MatchEvent.all.each do |event|
+      @players[event.player_name]+=1  if event.eventtype == "goal"
+    end
+    @players = @players.sort_by {|key, value| value}.reverse
+  end
+
   def update
     #update teams
     result = getJSON("standings&comp_id=1204")["teams"]
@@ -64,25 +72,23 @@ class HomeController < ApplicationController
       match["match_events"].each do |event|
         # next if MatchEvent.exists?(event["event_id"])
 
-        #create or update Player
-        p = Player.new
-        p = Player.find(event["event_player_id"]) if Player.exists?(event["event_player_id"])
-        p.id = event["event_player_id"]
-        p.name= event["event_player"]
-        p.team_id= match["match_localteam_id"] if event["event_team"] == "localteam"
-        p.team_id= match["match_visitorteam_id"] if event["event_team"] == "visitorteam"
-        p.save
-
         #create or update events
         e = MatchEvent.new
-        e = MatchEvent.find(event["event_id"]) if Player.exists?(event["event_id"])
         e.id = event["event_id"]
-        e.hometeam= event["event_team"]=="localteam"
+        e = MatchEvent.find event["event_id"] if MatchEvent.exists? event["event_id"]
+        if event["event_team"]=="localteam"
+          e.team_id = match["match_localteam_id"]
+        else
+          e.team_id = match["match_visitorteam_id"]
+        end
         e.match_id= event["event_match_id"]
         e.minute= event["event_minute"]
         e.player_id= event["event_player_id"]
         e.score = event["event_result"]
         e.eventtype= event["event_type"]
+        if(event["event_player"].index("(") != nil)
+          event["event_player"].slice!(event["event_player"].index("(") - 1, event["event_player"].length)
+        end
         e.player_name = event["event_player"]
         e.save
       end

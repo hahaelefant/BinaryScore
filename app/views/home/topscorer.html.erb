@@ -1,0 +1,21 @@
+<h1>Topscorer</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Name</th>
+      <th>Tore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 1 %>
+    <% @players.each do |name, goals| %>
+      <tr>
+        <td><%= i %>.</td>
+        <td><%= name %></td>
+        <td><%= goals %></td>
+        <% i+=1 %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
