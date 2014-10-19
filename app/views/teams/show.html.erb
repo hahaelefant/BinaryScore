@@ -1,49 +1,26 @@
+<h2>Detailed information about the team <%=@team.name%></h2>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <strong>Position:</strong>
-  <%= @team.position %>
-</p>
-
-<p>
-  <strong>Wins:</strong>
-  <%= @team.wins %>
-</p>
-
-<p>
-  <strong>Draws:</strong>
-  <%= @team.draws %>
-</p>
-
-<p>
-  <strong>Defeats:</strong>
-  <%= @team.defeats %>
-</p>
-
-<p>
-  <strong>Goals scored:</strong>
-  <%= @team.goals_scored %>
-</p>
-
-<p>
-  <strong>Goals conceded:</strong>
-  <%= @team.goals_conceded %>
-</p>
-
-<p>
-  <strong>Goaldifference:</strong>
-  <%= @team.goaldifference %>
-</p>
-
-<p>
-  <strong>Points:</strong>
-  <%= @team.points %>
-</p>
+<dl  class="dl-horizontal">
+    <dt>Name:</dt>
+    <dd><%= @team.name %></dd>
+    <dt>Position:</dt>
+    <dd><%= @team.position %></dd>
+    <dt>Wins:</dt>
+    <dd><%= @team.wins %></dd>
+    <dt>Draws:</dt>
+    <dd><%= @team.draws %></dd>
+    <dt>Defeats:</dt>
+    <dd><%= @team.defeats %></dd>
+    <dt>Goals scored:</dt>
+    <dd><%= @team.goals_scored %></dd>
+    <dt>Goals conceded:</dt>
+    <dd><%= @team.goals_conceded %></dd>
+    <dt>Goaldifference:</dt>
+    <dd><%= @team.goaldifference %></dd>
+    <dt>Points:</dt>
+    <dd><%= @team.points %></dd>
+</dl>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

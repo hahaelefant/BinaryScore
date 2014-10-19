@@ -90,7 +90,14 @@ class HomeController < ApplicationController
         if(event["event_player"].index("(") != nil)
           event["event_player"].slice!(event["event_player"].index("(") - 1, event["event_player"].length)
         end
-        e.player_name = event["event_player"]
+        if(event["event_player"].index(".") != 1 && event["event_player"].index(".") != nil)
+          pointIndex = event["event_player"].index(".")
+          first = event["event_player"].slice!(pointIndex-1,pointIndex+1)
+          event["event_player"].slice!(event["event_player"].length - 1)
+          e.player_name = "#{first} #{event["event_player"]}"
+        else
+          e.player_name = event["event_player"]
+        end
         e.save
       end
     end

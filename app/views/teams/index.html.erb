@@ -1,10 +1,36 @@
-<h1>Listing teams</h1>
-
-<table>
+<style>
+    .table tbody tr:first-child{
+        background-color: #a2e86d;
+    }
+    .table tbody tr:nth-child(2){
+        background-color: #c0f797;
+    }
+    .table tbody tr:nth-child(3){
+        background-color: #c0f797;
+    }
+    .table tbody tr:nth-child(4){
+        background-color: #c0f797;
+    }
+    .table tbody tr:nth-child(5){
+        background-color: #d9fcc0;
+    }
+    .table tbody tr:nth-child(18){
+        background-color: #ef7952;
+    }
+    .table tbody tr:nth-child(19){
+        background-color: #ef7952;
+    }
+    .table tbody tr:nth-child(20){
+        background-color: #ef7952;
+    }
+</style>
+<h1>Tabelle</h1>
+<%= link_to raw('<span class="glyphicon glyphicon-plus"></span> &nbsp;New Team'), new_team_path, :class => "btn btn-primary" %>
+<table class="table">
   <thead>
     <tr>
+      <th style="width: 0.5em;">Position</th>
       <th>Name</th>
-      <th>Position</th>
       <th>Wins</th>
       <th>Draws</th>
       <th>Defeats</th>
@@ -19,17 +45,17 @@
   </thead>
 
   <tbody>
-    <% @teams.each do |team| %>
+  <% @teams.each do |team| %>
       <tr>
-        <td><%= team.name %></td>
         <td><%= team.position %></td>
+        <td style="vertical-align: middle"><img src="assets/logos/<%= team.id%>.png" style="width: 2em"/>&nbsp;<%= team.name %></td>
         <td><%= team.wins %></td>
         <td><%= team.draws %></td>
         <td><%= team.defeats %></td>
         <td><%= team.goals_scored %></td>
         <td><%= team.goals_conceded %></td>
         <td><%= team.goaldifference %></td>
-        <td><%= team.points %></td>
+        <td style="color: dodgerblue; font-style: oblique"><%= team.points %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -37,7 +63,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Team', new_team_path %>
