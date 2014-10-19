@@ -1,0 +1,28 @@
+<h1>Livescores</h1>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Hometeam</th>
+      <th>Home score</th>
+      <th>Visitor score</th>
+      <th>Visitor team</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @data.each do |match| %>
+        <tr>
+          <td><%= match["match_formatted_date"] %></td>
+          <td><%= match["match_time"] %></td>
+          <td><%= match["match_localteam_name"] %></td>
+          <td><%= match["match_localteam_score"] %></td>
+          <td><%= match["match_visitorteam_score"] %></td>
+          <td><%= match["match_visitorteam_name"]%></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

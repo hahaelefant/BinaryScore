@@ -1,3 +1,4 @@
+require 'date'
 class HomeController < ApplicationController
   include ApplicationHelper
 
@@ -22,7 +23,7 @@ class HomeController < ApplicationController
   end
 
   def livescores
-    result = getJSON("today&comp_id=1204")
+    result = getJSON("fixtures&comp_id=1204&&match_date=#{Date.today.strftime('%d.%m.%Y')}")["matches"]
     @data = result
   end
 
