@@ -4,12 +4,13 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.8'
 gem 'json'
 gem 'foreigner'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'sass-rails', '>= 3.2'
+gem 'autoprefixer-rails'
+
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

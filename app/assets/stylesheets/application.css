@@ -11,6 +11,4 @@
  *= require_self
  *= require_tree .
  */
-p {
-    margin: 0;
-}
+

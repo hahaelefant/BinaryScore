@@ -2,13 +2,32 @@
 <html>
 <head>
   <title>BinaryScore</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to 'Livescores', home_livescores_path %></li>
+          <li><%= link_to 'Tabelle', teams_path %></li>
+          <li><%= link_to 'Torschützenliste', home_topscorer_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <%= yield %>
+  </div>
+  </div>
+</header>
 
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>
