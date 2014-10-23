@@ -23,7 +23,8 @@ class HomeController < ApplicationController
   end
 
   def livescores
-    result = getJSON("fixtures&comp_id=1204&&match_date=#{Date.today.strftime('%d.%m.%Y')}")["matches"]
+    #result = getJSON("fixtures&comp_id=1204&&match_date=#{Date.today.strftime('%d.%m.%Y')}")["matches"]
+    result = getJSON("fixtures&comp_id=1204&&match_date=18.10.2014")["matches"]
     @data = result
   end
 

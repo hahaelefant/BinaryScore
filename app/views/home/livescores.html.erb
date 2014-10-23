@@ -1,28 +1,58 @@
-<h1>Livescores</h1>
+<h1>Livescores <%= @data.first["match_formatted_date"] %></h1>
 <div>
-  <table>
-    <thead>
-    <tr>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Hometeam</th>
-      <th>Home score</th>
-      <th>Visitor score</th>
-      <th>Visitor team</th>
-    </tr>
-    </thead>
+  <!--<table>-->
+  <!--<thead>-->
+  <!--<tr>-->
+  <!--<th>Date</th>-->
+  <!--<th>Time</th>-->
+  <!--<th>Hometeam</th>-->
+  <!--<th>Home score</th>-->
+  <!--<th>Visitor score</th>-->
+  <!--<th>Visitor team</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
 
-    <tbody>
+  <!--<tbody>-->
+  <!--<% @data.each do |match| %>-->
+      <!--<tr>-->
+      <!--<td><%= match["match_formatted_date"] %></td>-->
+      <!--<td><%= match["match_time"] %></td>-->
+      <!--<td><%= match["match_localteam_name"] %></td>-->
+      <!--<td><%= match["match_localteam_score"] %></td>-->
+      <!--<td><%= match["match_visitorteam_score"] %></td>-->
+      <!--<td><%= match["match_visitorteam_name"]%></td>-->
+      <!--</tr>-->
+      <!--<% end %>-->
+  <!--</tbody>-->
+  <!--</table>-->
+  <div class="panel-group" id="accordion">
     <% @data.each do |match| %>
-        <tr>
-          <td><%= match["match_formatted_date"] %></td>
-          <td><%= match["match_time"] %></td>
-          <td><%= match["match_localteam_name"] %></td>
-          <td><%= match["match_localteam_score"] %></td>
-          <td><%= match["match_visitorteam_score"] %></td>
-          <td><%= match["match_visitorteam_name"]%></td>
-        </tr>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= match["match_id"]%>">
+                <%= match["match_time"] %>
+                <%= match["match_localteam_name"] %>
+                <%= match["match_localteam_score"] %> :
+                <%= match["match_visitorteam_score"] %>
+                <%= match["match_visitorteam_name"]%>
+              </a>
+            </h4>
+          </div>
+        </div>
+        <div id="collapse<%= match["match_id"]%>" class="panel-collapse collapse">
+          <div class="panel-body container">
+            <% match["match_events"].each do |event| %>
+                <div class="row" style="border-bottom: 2px solid #6c0011; width: 90%">
+                  <div class="col-md-<%= event["event_team"] == "localteam" ? 3 : 7%>"><%=event["event_minute"] %>'</div>
+                  <div class="col-md-5">
+                    <%= image_tag event["event_type"]+".png", :width => "15" %>
+                    <%=event["event_player"]%>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
     <% end %>
-    </tbody>
-  </table>
+  </div>
 </div>
