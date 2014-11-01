@@ -23,9 +23,12 @@ class HomeController < ApplicationController
   end
 
   def livescores
-    #result = getJSON("fixtures&comp_id=1204&&match_date=#{Date.today.strftime('%d.%m.%Y')}")["matches"]
-    result = getJSON("fixtures&comp_id=1204&&match_date=18.10.2014")["matches"]
+    result = getJSON("fixtures&comp_id=1204&&match_date=#{Date.today.strftime('%d.%m.%Y')}")["matches"]
+    # result = getJSON("fixtures&comp_id=1204&&match_date=18.10.2014")["matches"]
     @data = result
+  end
+
+  def statistics
   end
 
   def topscorer
@@ -34,6 +37,25 @@ class HomeController < ApplicationController
       @players[event.player_name]+=1  if event.eventtype == "goal"
     end
     @players = @players.sort_by {|key, value| value}.reverse
+    render layout: false
+  end
+
+  def yellowCards
+    @players = Hash.new(0)
+    MatchEvent.all.each do |event|
+      @players[event.player_name]+=1  if event.eventtype == "yellowcard"
+    end
+    @players = @players.sort_by {|key, value| value}.reverse
+    render layout: false
+  end
+
+  def redCards
+    @players = Hash.new(0)
+    MatchEvent.all.each do |event|
+      @players[event.player_name]+=1  if event.eventtype == "redcard"
+    end
+    @players = @players.sort_by {|key, value| value}.reverse
+    render layout: false
   end
 
   def update

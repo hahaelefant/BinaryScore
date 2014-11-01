@@ -1,0 +1,21 @@
+<h1>Gelbe Karten</h1>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Position</th>
+    <th>Name</th>
+    <th>Anzahl</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% i = 1 %>
+  <% @players.each do |name, cards| %>
+      <tr>
+        <td><%= i %>.</td>
+        <td><%= name %></td>
+        <td><%= cards %></td>
+        <% i+=1 %>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -11,6 +11,9 @@ BinaryScore::Application.routes.draw do
   get "home/fixtures"
   get "home/livescores"
   get "home/topscorer"
+  get "home/yellowCards"
+  get "home/redCards"
+  get "home/statistics"
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
