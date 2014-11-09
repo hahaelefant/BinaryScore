@@ -1,6 +1,17 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
+  def matchday
+    date = Date.today.strftime("%YY-%mm-%dd")
+    date = params[:matchday]
+    @matches = Match.find_all_by_date date
+    render layout: false
+  end
+
+  def choosedate
+
+  end
+
   # GET /matches
   # GET /matches.json
   def index

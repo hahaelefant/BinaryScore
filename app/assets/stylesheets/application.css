@@ -11,6 +11,7 @@
  *= require_self
  *= require bootstrap.css
  *= require_tree
+ *= require jquery-ui
  */
 body {
     font-size: 100%;

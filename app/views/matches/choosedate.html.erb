@@ -1,0 +1,18 @@
+<script>
+  $(document).ready(function() {
+      $(function () {
+          $("#datepicker").datepicker({dateFormat: "yy-mm-dd", onSelect: function(dateText, inst){
+              $.ajax(url =  "/matches/matchday?matchday="+dateText).done(function (data) {
+                  $("#matches").empty();
+                  $("#matches").append(data);
+              });
+          }});
+      });
+  });
+
+</script>
+
+<h3>Wählen sie das gewünschte Datum:</h3>
+<label for="datepicker">Datum: </label><input type="text" id="datepicker"><br />
+
+<div id="matches"></div>

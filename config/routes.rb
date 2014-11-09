@@ -1,5 +1,8 @@
 BinaryScore::Application.routes.draw do
 
+  get "matches/choosedate"
+  get "matches/matchday"
+
   resources :match_events
   resources :matches
   resources :teams
