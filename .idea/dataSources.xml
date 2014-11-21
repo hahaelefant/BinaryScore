@@ -5,23 +5,19 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/Binary Score</jdbc-url>
-      <user-name>root</user-name>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails Binary_Score: test" uuid="536b1403-12d0-43c1-83ff-c63d4f230c1c">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/Binary Score Test</jdbc-url>
-      <user-name>root</user-name>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails Binary_Score: production" uuid="d47f4d41-a1df-4147-8b5b-8493992e3888">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/BinaryScore</jdbc-url>
-      <user-name>root</user-name>
       <libraries />
     </data-source>
   </component>
 </project>
-

@@ -28,18 +28,16 @@
 <table class="table">
   <thead>
     <tr>
-      <th style="width: 0.5em;">Position</th>
+      <th style="width: 0.5em;">Pos.</th>
       <th>Name</th>
-      <th>Wins</th>
-      <th>Draws</th>
-      <th>Defeats</th>
-      <th>Goals scored</th>
-      <th>Goals conceded</th>
-      <th>Goaldifference</th>
-      <th>Points</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Gespielt</th>
+      <th>Siege</th>
+      <th>Unentschieden</th>
+      <th>Niederlagen</th>
+      <th>Tore für</th>
+      <th>Tore gegen</th>
+      <th>+/-</th>
+      <th>Punkte</th>
     </tr>
   </thead>
 
@@ -47,7 +45,10 @@
   <% @teams.each do |team| %>
       <tr>
         <td><%= team.position %></td>
-        <td style="vertical-align: middle"><img src="assets/logos/<%= team.id%>.png" style="width: 2em"/>&nbsp;<%= team.name %></td>
+        <td style="vertical-align: middle;color: darkblue"><a href="<%= team_path team%>">
+          <img src="assets/logos/<%= team.id%>.png" style="width: 2em"/>&nbsp;<%= team.name %>
+        </a></td>
+        <td><%= team.draws + team.wins + team.defeats %></td>
         <td><%= team.wins %></td>
         <td><%= team.draws %></td>
         <td><%= team.defeats %></td>
@@ -55,9 +56,6 @@
         <td><%= team.goals_conceded %></td>
         <td><%= team.goaldifference %></td>
         <td style="color: dodgerblue; font-style: oblique"><%= team.points %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @data = getWikiJSON(@team.name)["parse"]["text"]["*"]
   end
 
   # GET /teams/new

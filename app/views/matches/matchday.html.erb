@@ -10,10 +10,10 @@
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= match.id %>">
                 <%= match.date %>
                 <%= match.time.strftime("%H:%M") %>
-                <%= match.home_team %>
+                <%= match.hometeam.name %>
                 <%= match.home_score %> :
                 <%= match.visitor_score %>
-                <%= match.visitor_team %>
+                <%= match.visitorteam.name %>
               </a>
             </h4>
           </div>

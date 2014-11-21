@@ -14,4 +14,15 @@ module ApplicationHelper
     redirect_to :controller => "home", :action => "error" unless data["ERROR"] == "OK"
     data
   end
+
+  def getWikiJSON title
+    baseUrl = "http://en.wikipedia.org/w/api.php?page="
+    params = "&action=parse&format=json&prop=text&section=0"
+    url = "#{baseUrl}#{title}%20F.C.#{params}"
+    url.sub! ' ', "%20"
+    url.sub! ' ', "%20"
+    resp = Net::HTTP.get_response(URI.parse url)
+    data = JSON.parse(resp.body)
+    data
+  end
 end
