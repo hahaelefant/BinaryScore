@@ -8,8 +8,10 @@
           <div class="panel-heading text-center">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= match.id %>">
-                <%= match.date %>
-                <%= match.time.strftime("%H:%M") %>
+                <span class="text-left" style="text-align: left">
+                  <%= match.time.to_time.strftime("%H:%M") %> Uhr
+                </span>
+
                 <%= match.hometeam.name %>
                 <%= match.home_score %> :
                 <%= match.visitor_score %>

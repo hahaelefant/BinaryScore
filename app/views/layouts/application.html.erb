@@ -10,17 +10,13 @@
           $(".body").height($(document).height() + 50);
       });
   </script>
-  <!--<style>-->
-      /*.body{*/
-          /*background: url("../assets/backgrounds/<%= yield(:teamid) %>.jpg") no-repeat fixed top right;*/
-          /*background-attachment: fixed;*/
-          /*background-size: cover;*/
-      /*}*/
-  <!--</style>-->
+  <% if content_for? :for_head %>
+    <%= yield :for_head %>
+  <% end %>
 </head>
 <body class="body">
 <!--<div style="height:100%;" class="body"></div>-->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

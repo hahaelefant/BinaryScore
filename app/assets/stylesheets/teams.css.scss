@@ -1,3 +1,26 @@
 // Place all the styles related to the Teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table.tablesorter th {
+  text-align: left;
+  padding: 5px;
+  background-color: #6E6E6E;
+}
+table.tablesorter .header {
+  background-image: url(bg.png);
+  background-repeat: no-repeat;
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #000;
+  border-top: 1px solid #FFF;
+  padding-left: 30px;
+  padding-top: 8px;
+  height: auto;
+}
+table.tablesorter .headerSortUp {
+  background-image: url(asc.png);
+  background-repeat: no-repeat;
+}
+table.tablesorter .headerSortDown {
+  background-image: url(desc.png);
+  background-repeat: no-repeat;
+}
