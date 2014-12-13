@@ -9,6 +9,10 @@ class TeamsController < ApplicationController
     @teams.order! :position
   end
 
+  def verlauf
+    @data = Match.teammatches
+  end
+
   # GET /teams/1
   # GET /teams/1.json
   def show

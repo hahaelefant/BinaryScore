@@ -1,0 +1,69 @@
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#chart").highcharts({
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: 'Punkteverlauf nach Spieltagen'
+            },
+            tooltip: {
+                shared: true,
+                crosshairs: true
+            },
+            xAxis: {
+                categories: <%= (1..@data[:Arsenal].length).to_a %>
+            },
+            yAxis: {
+                title: {
+                    text: "Punkte"
+                },
+                floor: 0,
+                ceiling: 100
+            },
+            series: [
+                <% @data.each do |key, value| %>
+                {
+                    name: "<%= key.to_s %>",
+                    data: <%= value %>
+                }<%  unless key == @data.keys.last %>, <% end %>
+                <% end %>
+            ]
+        });
+        <% x = 0 %>
+        <% @data.each do |key, value| %>
+            $("#<%= key.to_s.gsub ' ', '' %>").on('change', function () {
+                var chart = $('#chart').highcharts();
+                var series = chart.series[<%= x %>];
+                if (series.visible) {
+                    series.hide();
+                    $button.html('Show series');
+                } else {
+                    series.show();
+                    $button.html('Hide series');
+                }
+            });
+            <% if x >= 5 %>
+                $("#chart").highcharts().series[<%= x %>].hide();
+            <% end %>
+            <% x += 1 %>
+        <% end %>
+    });
+</script>
+
+<div style="float:left; margin-top: 30px">
+  <% x = 0 %>
+  <% @data.each do |key, value| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" <%= 'checked="true"' if x < 5 %> id="<%= key.to_s.gsub ' ', '' %>"><%= key.to_s %>
+        </label>
+      </div>
+      <% x +=1 %>
+  <% end %>
+</div>
+
+<div id="chart" style="margin-top: 20px;width: 80%"></div>
